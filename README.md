@@ -18,6 +18,6 @@ This repository is an accumulation of a few Linux system administration tasks ca
 
 ---
 
-## Note:
+## Note
 
 Contents are written in the 'uncategorized' folder before they are moved to the appropriate directory after a review.
