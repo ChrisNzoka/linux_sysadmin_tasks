@@ -1,0 +1,13 @@
+# Finding Ugly Filenames with find
+
+---
+
+Say we have some wrongly-named files that contain unwanted characters which are
+not a member of the following file sets [-_./0-9a-zA-Z].
+
+We can find them with the following command
+
+```bash
+$ find . -regex '.*[^-_./0-9a-zA-Z].*'
+
+```

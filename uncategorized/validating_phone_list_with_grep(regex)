@@ -1,0 +1,25 @@
+# Validating a Phone List Using grep
+
+---
+
+Say we have a list of phone numbers in a text file **_phonelist.txt_** OR
+Alternatively, we can create a random list with the following script:
+
+```bash
+#/bin/bash
+for i in {1..10};
+do
+    echo "(+${RANDOM:0:3}) ${RANDOM:0:3}-${RANDOM:0:3}-${RANDOM:0:4}" >> phonelist.txt;
+done
+```
+
+This will produce the file **_phonelist.txt_** containing 10 random phone
+numbers.
+Now, to check the list for invalid phone numbers, we'll use the ensuing
+command:
+
+```bash
+$ grep -Ev '^\(+[0-9]{3}\) [0-9]{3}-[0-9]{3}-[0-9]{4}$' ./phonelist.txt
+phonelist.txt
+(+234) 34-345-322
+```
