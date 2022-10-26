@@ -1,0 +1,1 @@
+The output begins with the names of the two files and their timestamps. The first file is marked with asterisks and the second file is marked with dashes. Throughout the remainder   of the listing, these markers will signify their respective files. Next, we see groups of changes, including the default number of surrounding context lines.
