@@ -1,0 +1,85 @@
+# Data cleaning and sorting using the command line
+
+---
+
+## In this task, we'll create random data and clean it up using CLI utilities including
+
+-sort -cut -paste
+
+**Our data is a file named exostaff.txt** **It contains staff names, ID numbers
+and date of recruitment in MM/DD/YYYY**
+
+Chris Turner 1145 12/07/2006
+
+Amanda Bail 3465 11/25/2008
+
+Mason Mount 3056 06/19/2008
+
+Usman Alkali 3001 04/24/2008
+
+Queen Halita 2589 11/08/2007
+
+Alex Cuba 2309 10/04/2007
+
+Henry Finicky 897 10/26/2006
+
+Ema Hayes 2045 05/31/2007
+
+Charles Harley 2311 10/18/2007
+
+Alicia Keys 2002 04/19/2007
+
+Richard Stallman 345 05/11/2006
+
+Pierre Bum 896 10/24/2006
+
+Ferdinand Ray 3025 05/13/2008
+
+David MacKenzie 432 06/01/2006
+
+Amber Ryder 3275 10/30/2008
+
+Zainab Baba 45 03/20/2006
+
+-- We can sort the file content alphabetically for the first field and write to
+a new file
+
+```bash
+sort exostaff.txt > sortfile.txt
+```
+
+-- To sort according to ID numbers
+
+```bash
+sort -k 3 exostaff.txt
+```
+
+where -k 3 flag denotes the sort field. The ID number is the 3rd field in the
+list. Alternatively, we can use the long form **$ sort --key=3 exostaff.txt**
+
+However, this only sorts the first digits of the numbers. To sort accross all
+digits, we'll attach n to the key value:
+
+```bash
+sort -k 3n exostaff.txt
+```
+
+-- Say we want to copy all the names to a new file, we'll employ the cut
+command:
+
+```bash
+cut -d ' ' -f 1,2 exostaff.txt > staffNames.txt
+```
+
+where -d specifies the delimiter (i.e the seperator for the fields). Here, it is
+a space. Alternatively, the data could have | or : or , as delimiter:
+
+Ferdinand,Ray,3025,05/13/2008
+
+Ferdinand:Ray:3025:05/13/2008
+
+-- Say we want to paste the names into another file
+
+```bash
+paste staffNames.txt old_staffs.txt
+```
