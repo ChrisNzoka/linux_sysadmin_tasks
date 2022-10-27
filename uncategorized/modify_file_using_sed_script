@@ -1,0 +1,73 @@
+# sed script to modify employee list and date of recruitment
+
+---
+
+## Task
+
+Here, we'll modify the file exostaff.txt:
+
+Chris Turner 1145 12/07/2006
+
+Amanda Bail 3465 11/25/2008
+
+Mason Mount 3056 06/19/2008
+
+Usman Alkali 3001 04/24/2008
+
+Queen Halita 2589 11/08/2007
+
+Alex Cuba 2309 10/04/2007
+
+Henry Finicky 897 10/26/2006
+
+Ema Hayes 2045 05/31/2007
+
+Charles Harley 2311 10/18/2007
+
+Alicia Keys 2002 04/19/2007
+
+Richard Stallman 345 05/11/2006
+
+Pierre Bum 896 10/24/2006
+
+Ferdinand Ray 3025 05/13/2008
+
+David MacKenzie 432 06/01/2006
+
+Amber Ryder 3275 10/30/2008
+
+Zainab Baba 45 03/20/2006
+
+-- First, we'll outline the sed commands to perform various tasks. Then, we'll
+arrange them in sequence and set it up in a sed script file.
+
+- To convert all the texts to upper case
+  y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/
+
+- Next, to modify the dates from mm/dd/yyyy to yyyy-mm-dd
+  s/\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}$/\3-\1-\2/
+
+Now, here's our script
+
+```bash
+# sed script to modify employee list and date of recruitment
+
+1 i\
+\
+Modified List of Employees\
+
+# the above insersts the texts "Modified List of Employees" to our text file
+# where 'i' is the sed insert command
+
+s/\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}$/\3-\1-\2/
+y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/
+```
+
+- To use the script, well save it in a file say _modify.sed_. Then, we can use
+  it to modify our _exostaff.txt_ file:
+
+```bash
+$ sed -f modify.sed exostaff.txt
+```
+
+Lastly, we can examine the file to ascertain the change is accurate.
