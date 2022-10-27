@@ -2,8 +2,8 @@
 
 ---
 
-tr is a transliteration utitlity. It takes standard input and translates it according to the specified rule.
-For instance:
+tr is a transliteration utitlity. It takes standard input and translates it
+according to the specified rule. For instance:
 
 ```bash
 echo "bash" | tr a-z A-Z
@@ -14,10 +14,11 @@ another.
 
 **Now, let's encrypt a test file containing the ensuing texts:**
 
-The output begins with the names of the two files and their timestamps. The first file is
-marked with asterisks and the second file is marked with dashes. Throughout the remainder
-of the listing, these markers will signify their respective files. Next, we see groups of
-changes, including the default number of surrounding context lines.
+The output begins with the names of the two files and their timestamps. The
+first file is marked with asterisks and the second file is marked with dashes.
+Throughout the remainder of the listing, these markers will signify their
+respective files. Next, we see groups of changes, including the default number
+of surrounding context lines.
 
 To encrpyt, we'll use our test file as standard input to tr.
 
@@ -25,6 +26,10 @@ To encrpyt, we'll use our test file as standard input to tr.
 tr aeiouAEIOU 12345 < testfile.txt > encryptfile
 ```
 
-**The encryptfile content should contain the following**
+**The encryptfile content should contain the following:**
 
-Th2 45tp5t b2g3ns w3th th2 n1m2s 4f th2 tw4 f3l2s 1nd th23r t3m2st1mps. Th2 f3rst f3l2 3s m1rk2d w3th 1st2r3sks 1nd th2 s2c4nd f3l2 3s m1rk2d w3th d1sh2s. Thr45gh45t th2 r2m13nd2r   4f th2 l3st3ng, th2s2 m1rk2rs w3ll s3gn3fy th23r r2sp2ct3v2 f3l2s. N2xt, w2 s22 gr45ps 4f ch1ng2s, 3ncl5d3ng th2 d2f15lt n5mb2r 4f s5rr45nd3ng c4nt2xt l3n2s.
+Th2 45tp5t b2g3ns w3th th2 n1m2s 4f th2 tw4 f3l2s 1nd th23r t3m2st1mps. Th2
+f3rst f3l2 3s m1rk2d w3th 1st2r3sks 1nd th2 s2c4nd f3l2 3s m1rk2d w3th d1sh2s.
+Thr45gh45t th2 r2m13nd2r 4f th2 l3st3ng, th2s2 m1rk2rs w3ll s3gn3fy th23r
+r2sp2ct3v2 f3l2s. N2xt, w2 s22 gr45ps 4f ch1ng2s, 3ncl5d3ng th2 d2f15lt n5mb2r
+4f s5rr45nd3ng c4nt2xt l3n2s.
