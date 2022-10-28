@@ -1,0 +1,296 @@
+# command to print effective userid
+whoami
+
+# command to make multiple nested directories
+mkdir -p <main dir/child dir/grand child dir>
+
+# command to display the content of a file with lines numbered
+cat -n <filename>
+
+# command to search within a file when displayed with less program
+/<enter the word to search>
+
+# command to ceck number of lines, words in a file
+# The first number is for lines, the second is for words and the last is for size in bytes
+wc <filename>
+wc -l for just lines
+wc -w for just words
+#check man wc for other options
+
+# command to sort alphabetically
+sort <filename>
+# to sort numerically
+sort -n
+# to sort and display only one of duplicate contents
+sort -u
+# to reverse the output of sort
+sort -r
+#check man sort for other options
+the uniq command can be used alongside the sort command
+
+# using ? to match patterns in file names
+ls -l *.???
+this comand will list all files that ends with 3 lettered extensions like .txt .css .htm
+
+# command to compare the content of files
+diff <file1 name> <file2 name>
+
+To output the result side-by-side, use -y option
+for more details, use the -u option
+
+# command to search for files or directories in current directory hierarchy by name
+find . -name 'filename or wildcard'
+Example; find . -name '*.js'
+
+-name is case sensitive. 
+-iname To find using name irrespective of case (case insensitive)
+Example; find . -type f -iname 'F*' 
+
+-type f for files only (ignore directories)
+-type d for directories only 
+-type l for symbolic links
+Example; find . -name -type d '*E*'
+
+# To find using the -or operator
+Example; find . -name -type d '*E*' -or -name 'F*'
+
+# To find by size; e.g 
+files larger than 100KB
+find . -type f -size +100k
+
+files less than 20GB
+find . -type f -size -20G
+
+files larger than 100MB but less than 250MB
+find . -type f -size +100M -size -250M
+
+# To find by time; e.g
+files edited more than 2 days alongside
+find . -type f -mtime +2
+
+files edited within the last 3 days
+find . -type f -mtime -3
+
+files edited in the last 24 hours
+find . -type f -mtime -1
+
+# To delete the file(s) after finding, simply add -delete after the command
+e.g; To delete all files edited less than 3 days ago;
+find . -type f -mtime -3 -delete
+
+# To execute additional commands on the result of find command,
+# use the -exec option as below
+
+find . -type f -size +100M -size -250M -exec ls -l {} \;
+
+# command to search within files
+grep <search keyword> <filename>
+
+# -n flag displays the line numbers the keyword appear on
+grep -n <search keyword> <filename>
+
+# -C flag print a given number of lines before and after the occurrence of the search keyword
+# to give more context to the search result
+grep -nC <integer for lines to print before and after> <search keyword> <filename>
+
+# -r flag asks grep to search recusively in all files and directories
+grep -r "search keyword" <location e.g ~ . /Documents>
+
+# -i to ignore case sensitive search
+grep -i "Keyword" <Location to search>
+
+# -E is used to match a regex(regular expression) pattern.
+# e.g for an email address,
+grep -rE -o grep -rE -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" ~
+
+# to check the size of files in the current directory
+du
+
+# You can specify a folder
+du <folder>
+
+# -h to print the sizes in human-readable format 
+# -c to specify the grand total size
+# for Example, displays the grand total in human readable format
+du -hc 
+
+# We can sort the output according to size
+du -h | sort -h
+
+# to check for the larger files
+du -h | sort -h | tail
+OR
+du -h | sort -hr | head
+
+# to check the free disk space
+df
+# -h to show values in human-readable format
+# --total to output the total free space
+
+# History command displays all the commands ran previously on the terminal.
+history
+
+# To search for a previously used command, pass history to grep with a search keyword
+history | grep 'Betty'
+# A command in history can be rerun by expansion using it's history number
+# for Example, the command grep -rE -o --color "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" ~
+# is number 72 in history. To rerun it, we enter;
+!72
+
+# command to display topmost cpu intensive running processes
+top
+# command to display topmost memory intensive running processes
+top -o mem
+
+# command to kill or terminate a process
+kill <PID>
+
+# There are several signals or options associated with the kill command
+# To display them, we use;
+kill -l
+
+# the default option is -TERM or -SIGTERM or -9
+
+# We can run the kill command with other signals such as below;
+kill -KILL <PID>
+
+# we can use the serial number from `kill -l` of the signal to run the kill command
+# for example, to forcefully kill a process
+kill -KILL <PID>
+OR
+kill -SIGKILL <PID>
+OR
+kill -15 <PID>
+
+# command to terminate all the processes of a particular program
+killall <program name>
+
+# command to find jobs running in the background
+jobs
+
+# command to move a running job to the background
+bg
+
+# command to bring a running job to the foreground
+fg
+
+# use th job number of a particular job to select which one to bring to the foreground
+# e.g
+fg 2
+
+# to suspend a running command on the terminal, press ctrl z
+
+# to run a program or command in the background, attach the ampersand at the end\
+# e.g
+ls -l > list.txt &
+
+# command to delay the prompt for a specified
+sleep <time in secs>
+
+# This is usually used to enable delays in scripts
+
+# command to compress a file
+gzip <filename>
+
+# command to compress a file while keeping the original file
+gzip -c <filename> > <filename.gz>
+OR
+gzip -k <filename>
+
+# command to uncompress a file
+gunzip <filename.gz>
+OR
+gzip -d <filename.gz>
+OR
+zcat <filename.gz>
+
+# -f is used to force compress or decompress
+gzip -cf <filename>
+
+# -q supresses all warnings
+
+# -r recursively compresses all the files within a specified directory
+gzip -r Documents
+
+# flags to alter the speed and rate of compression
+--fast or -1 speeds up the process and results to a lesser compression
+--best or -9 is the slowest and give the best compression
+-6 is the default
+
+# check out man gzip for more details o compressing several files at once.
+
+# command used to convert a group of files into an archive.
+# basic syntax
+tar option(s) archive_name file_name(s)
+
+# command to create an archive file; 
+# Importnt flags: -c instructs tar to create, -f instructs tar that the next argument is the new archive file name
+tar -cf filename.tar file1 file2 file3
+
+# -v To display a list of the files that are included in the archive while archiving
+tar -cvf file.tar file1 file2 file3
+
+# To make archives from the contents of one or more directories. 
+# The result is recursive; hence, it includes all the content of the listed directories
+tar -cvf dir.tar dir1 dir2
+
+# tar with a wildcard
+tar -cf file.tar *
+
+# To remove or delete the files after adding them to archive
+tar -cvf file.tar --remove-files file1 file2 file3
+
+# tar command does not compress. The file can be compressed after archiving using gzip or equivalent.
+# or with a tar option
+# To compress use any of these suitable options
+# -j (for bzip2), -z (for gzip) or -Z (for compress).
+tar -cvzf files.tar.gz file4 file5 file6
+
+# command to extract or unpack tar or archive files;
+tar -xf file.tar
+# Check if there's enough storage space.
+# Unpack in a new or empty directory
+# Decompress with the appropriate program if compressed.
+
+# To run verbose use -v
+tar -xvf file.tar
+
+# To automatically decompress tar files prior to extraction,
+# -j (for bzip2 compressed file), -z (for gzip compressed file)
+tar -xjvf files.tar.bz2
+OR
+tar -xzvf files.tar.gz
+
+# command to extract an archive file to a specified directory
+tar -xvf file.tar -C <destination-directory>
+
+# To add a file to an existing archive use the -r option.
+tar -rf file.tar <filename>
+
+# The --delete option allows specified files to be completely removed from a tar 
+tar -f file.tar --delete file1 file2
+
+# The -t option tells tar to list the contents of an uncompressed archive without performing an extraction.
+tar -tf file.tar
+
+# syntax to create an alias for example; to use ls as ls --color
+alias ls='ls --color'
+
+# Aliases terminate once you exit the terminal. 
+# To create a lasting alias, find .bashrc file and input the alias command in it.
+# The file is either located in the /root/ directory or ~ directory
+# ls -a will list all files and folders including the ones starting with .
+# move the file to the home directory, then run the command
+source .bashrc to restart the aliases
+
+# command to convert standard input to arguments for a piped command
+command | xargs command
+
+# e.g to remove files outputed by the cat command
+cat dir1 | xargs rm
+
+# command to create a hardlink to a file
+ln file <hardlink name>
+
+# to create a softlink
+ln -s file <hardlink name>
